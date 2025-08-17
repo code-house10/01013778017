@@ -1,0 +1,417 @@
+import { useEffect, useState } from "react";
+import { Phone, Mail, Truck, Boxes, ChevronRight, CheckCircle2, Facebook, Instagram, Linkedin, Youtube, Clock, MapPin, PlayCircle } from "lucide-react";
+
+export default function AlFormawiLanding() {
+  const [years, setYears] = useState(0);
+  const [clients, setClients] = useState(0);
+  const [experts, setExperts] = useState(0);
+
+  useEffect(() => {
+    const targets = { years: 20, clients: 7251, experts: 82 };
+    const duration = 1500;
+    const steps = 45;
+    const interval = duration / steps;
+    let i = 0;
+    const id = setInterval(() => {
+      i++;
+      setYears(Math.round((targets.years * i) / steps));
+      setClients(Math.round((targets.clients * i) / steps));
+      setExperts(Math.round((targets.experts * i) / steps));
+      if (i >= steps) clearInterval(id);
+    }, interval);
+    return () => clearInterval(id);
+  }, []);
+
+  const heroPhoto = "images/movers2.webp";
+  const heroIllustration = "images/truck.webp";
+  const aboutMedia = "images/winch2.jpg";
+
+  const process = [
+    { title: "حجز المعاينة", desc: "نتواصل ونحدد موعدًا مناسبًا لتقييم المتطلبات.", icon: <Clock className="w-5 h-5"/> },
+    { title: "تغليف ونقل", desc: "تغليف احترافي ونقل آمن بمعدات حديثة.", icon: <Boxes className="w-5 h-5"/> },
+    { title: "تركيب وتسليم", desc: "تركيب وتشغيل وتسليم في الموعد.", icon: <CheckCircle2 className="w-5 h-5"/> },
+  ];
+
+  const services = [
+    { img: "images/movers.webp", title: "نقل منازل", desc: "فك، تغليف، نقل، تركيب بنفس اليوم." },
+    { img: "images/truck3.jpg", title: "نقل مكاتب", desc: "جدولة مرنة بدون تعطيل التشغيل." },
+    { img: "images/winch.webp", title: "ونش رفع", desc: "رفع آمن للأدوار العليا." },
+    { img: "images/packing.webp", title: "تخزين أثاث", desc: "مخازن آمنة قصيرة وطويلة الأجل." },
+    { img: "images/curtains.webp", title: "تركيب ستائر", desc: "قياس وتثبيت وتشطيب نظيف." },
+    { img: "images/aircondtion-maintenance.webp", title: "فك أجهزة", desc: "تكييفات وتليفزيونات وأجهزة المطبخ." },
+  ];
+
+  const extra = [
+    { img: "images/dishes-packing.webp", title: "تغليف الأطباق", badge: "جديد" },
+    { img: "images/aircondition-maintenance2.webp", title: "صيانة تكييف", badge: "خصم" },
+    { img: "images/caroenter.webp", title: "نجارة", badge: "إضافة" },
+    { img: "images/carpenters2.jpg", title: "نجارين متخصصين", badge: "HOT" },
+  ];
+
+  const posts = [
+    { img: "images/packing.webp", title: "إزاي ترتّب للانتقال؟", excerpt: "خطوات عملية لتجهيز العفش قبل يوم النقل." },
+    { img: "images/dishes-packing.webp", title: "اختيار مواد التغليف", excerpt: "أفضل خامات لحماية الأثاث أثناء النقل." },
+    { img: "images/winch2.jpg", title: "ونش الرفع", excerpt: "متى تحتاجه وما مميزاته للسلامة؟" },
+  ];
+
+  const gallery = [
+    "images/trucks.webp",
+    "images/movers2.webp",
+    "images/packing.webp",
+    "images/curtains.webp",
+    "images/aircondtion-maintenance.webp",
+  ];
+
+  return (
+    <div dir="rtl" className="text-[#333] bg-white font-sans">
+      {/* بقية الكود كما هو مع تحديث الصور أعلاه */}
+    </div>
+  );
+}
+import { useEffect, useRef, useState } from "react";
+import { Phone, Mail, Truck, Boxes, ChevronRight, CheckCircle2, Facebook, Instagram, Linkedin, Youtube, Clock, MapPin, PlayCircle } from "lucide-react";
+
+/**
+ * شركة الفراماوي – Landing Page (RTL) | React + Tailwind
+ * مواصفات مغطاة:
+ * 1) Header أبيض + شعار يسار + روابط: الرئيسية / خدمات الفراماوي / تواصل معنا
+ * 2) Hero: تخطيط منقسم (يمين صورة حقيقية صناديق، يسار Illustrations) + Overlay + CTA أخضر
+ * 3) About: خلفية بيج #f9f3e4، صورة/فيديو يسار + نص يمين
+ * 4) Steps: شبكة 3 أعمدة مع أيقونات ونصوص
+ * 5) فاصل مموج ذهبي + خدمات في Cards مائلة فوق تدرج ذهبي
+ * 6) Extra Services: سلايدر أفقي ببطاقات بيضاء
+ * 7) Stats: خلفية صورة ممتدة + طبقة نصف شفافة + عدادات
+ * 8) Blog: شبكة 3 بطاقات
+ * 9) Gallery: سلايدر أفقي للصور
+ * 10) Footer: رمادي داكن #222 عناوين ذهبية
+ */
+
+export default function AlFormawiLanding() {
+  const [years, setYears] = useState(0);
+  const [clients, setClients] = useState(0);
+  const [experts, setExperts] = useState(0);
+
+  // عدادات بسيطة
+  useEffect(() => {
+    const targets = { years: 20, clients: 7251, experts: 82 };
+    const duration = 1500; // ms
+    const steps = 45;
+    const interval = duration / steps;
+    let i = 0;
+    const id = setInterval(() => {
+      i++;
+      setYears(Math.round((targets.years * i) / steps));
+      setClients(Math.round((targets.clients * i) / steps));
+      setExperts(Math.round((targets.experts * i) / steps));
+      if (i >= steps) clearInterval(id);
+    }, interval);
+    return () => clearInterval(id);
+  }, []);
+
+  // بيانات خدمات/مدونة/جاليري (استبدل المسارات بصورك)
+  const heroPhoto = "/assets/formawi/hero-boxes.jpg"; // يمين الهيرو: صورة صناديق حقيقية
+  const heroIllustration = "/assets/formawi/hero-illustration.png"; // يسار الهيرو: رسم توضيحي شاحنة + كراتين
+  const aboutMedia = "/assets/formawi/about-crane.jpg"; // صورة/فيديو رافعة
+
+  const process = [
+    { title: "حجز المعاينة", desc: "نتواصل ونحدد موعدًا مناسبًا لتقييم المتطلبات.", icon: <Clock className="w-5 h-5"/> },
+    { title: "تغليف ونقل", desc: "تغليف احترافي ونقل آمن بمعدات حديثة.", icon: <Boxes className="w-5 h-5"/> },
+    { title: "تركيب وتسليم", desc: "تركيب وتشغيل وتسليم في الموعد.", icon: <CheckCircle2 className="w-5 h-5"/> },
+  ];
+
+  const services = [
+    { img: "/assets/formawi/svc1.jpg", title: "نقل منازل", desc: "فك، تغليف، نقل، تركيب بنفس اليوم." },
+    { img: "/assets/formawi/svc2.jpg", title: "نقل مكاتب", desc: "جدولة مرنة بدون تعطيل التشغيل." },
+    { img: "/assets/formawi/svc3.jpg", title: "ونش رفع", desc: "رفع آمن للأدوار العليا." },
+    { img: "/assets/formawi/svc4.jpg", title: "تخزين أثاث", desc: "مخازن آمنة قصيرة وطويلة الأجل." },
+    { img: "/assets/formawi/svc5.jpg", title: "تركيب ستائر", desc: "قياس وتثبيت وتشطيب نظيف." },
+    { img: "/assets/formawi/svc6.jpg", title: "فك أجهزة", desc: "تكييفات وتليفزيونات وأجهزة المطبخ." },
+  ];
+
+  const extra = [
+    { img: "/assets/formawi/x1.jpg", title: "توريد كراتين", badge: "جديد" },
+    { img: "/assets/formawi/x2.jpg", title: "مواد تغليف", badge: "خصم" },
+    { img: "/assets/formawi/x3.jpg", title: "تعقيم", badge: "إضافة" },
+    { img: "/assets/formawi/x4.jpg", title: "تنظيف سريع", badge: "HOT" },
+  ];
+
+  const posts = [
+    { img: "/assets/formawi/b1.jpg", title: "إزاي ترتّب للانتقال؟", excerpt: "خطوات عملية لتجهيز العفش قبل يوم النقل." },
+    { img: "/assets/formawi/b2.jpg", title: "اختيار مواد التغليف", excerpt: "أفضل خامات لحماية الأثاث أثناء النقل." },
+    { img: "/assets/formawi/b3.jpg", title: "ونش الرفع", excerpt: "متى تحتاجه وما مميزاته للسلامة؟" },
+  ];
+
+  const gallery = [
+    "/assets/formawi/g1.jpg",
+    "/assets/formawi/g2.jpg",
+    "/assets/formawi/g3.jpg",
+    "/assets/formawi/g4.jpg",
+    "/assets/formawi/g5.jpg",
+  ];
+
+  return (
+    <div dir="rtl" className="text-[#333] bg-white font-sans">
+      {/* Header */}
+      <header className="sticky top-0 z-40 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {/* شعار مستطيل مع رسمة شاحنة + كراتين */}
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-gradient-to-tr from-amber-400 to-yellow-500 rounded-md grid place-content-center">
+                <Truck className="w-6 h-6 text-white"/>
+              </div>
+              <div className="leading-tight">
+                <div className="font-extrabold">شركة الفراماوي</div>
+                <div className="text-xs text-gray-500">نقل عفش – شاحنات ورافعات</div>
+              </div>
+            </div>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 font-semibold text-[#333]">
+            <a href="#home" className="hover:text-emerald-600">الرئيسية</a>
+            <a href="#services" className="hover:text-amber-500">خدمات الفراماوي</a>
+            <a href="#contact" className="hover:text-emerald-600">تواصل معنا</a>
+          </nav>
+          <a href="tel:01024888950" className="inline-flex items-center gap-2 rounded-full bg-emerald-600 text-white px-4 py-2 font-bold hover:bg-emerald-700">
+            <Phone className="w-4 h-4"/> اتصل الآن
+          </a>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section id="home" className="relative">
+        <div className="max-w-7xl mx-auto px-4 py-10 md:py-14 grid md:grid-cols-2 gap-8 items-center">
+          {/* Left: Illustration */}
+          <div className="order-2 md:order-1">
+            <div className="relative rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-100 p-6">
+              <img src={heroIllustration} alt="Illustration" className="w-full h-[320px] object-contain"/>
+              <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-amber-400/90"/>
+              <div className="absolute -bottom-3 -right-3 w-10 h-10 rounded-full bg-amber-300/80"/>
+            </div>
+          </div>
+
+          {/* Right: Real Photo with overlay */}
+          <div className="relative order-1 md:order-2 h-[360px] md:h-[420px] rounded-2xl overflow-hidden">
+            <img src={heroPhoto} alt="صناديق نقل" className="absolute inset-0 w-full h-full object-cover"/>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"/>
+            <div className="absolute bottom-5 right-5 text-white max-w-md space-y-3">
+              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{color:'#D4A017'}}>شركة الفراماوي</h1>
+              <p className="text-white/90">نقل عفش باحترافية: تغليف، ونش رفع، وتركيب — التزام كامل بالمواعيد وجودة التنفيذ.</p>
+              <div className="flex items-center gap-3 pt-1">
+                <a href="tel:01024888950" className="rounded-xl bg-emerald-600 text-white px-5 py-3 font-extrabold hover:bg-emerald-700">اتصل الآن</a>
+                <a href="#services" className="rounded-xl border border-white/80 text-white px-5 py-3 font-bold hover:bg-white/10">خدماتنا</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-14 bg-[#f9f3e4]">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+          {/* Left media */}
+          <div className="order-1 md:order-1 relative">
+            <div className="relative rounded-3xl overflow-hidden shadow border border-amber-100">
+              <img src={aboutMedia} alt="رافعة نقل" className="w-full h-[360px] object-cover"/>
+              <button className="absolute inset-0 grid place-content-center text-white/95 hover:text-white">
+                <span className="inline-flex items-center gap-2 bg-black/40 backdrop-blur px-4 py-2 rounded-full">
+                  <PlayCircle className="w-5 h-5"/> مشاهدة
+                </span>
+              </button>
+            </div>
+          </div>
+          {/* Right text */}
+          <div className="order-2 md:order-2">
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-3">من نحن</h2>
+            <p className="text-[#555] leading-8">نقدم حلول نقل شاملة للمنازل والشركات مع فريق مدرب، معدات حديثة، وتخطيط محكم لرحلة النقل. نغلف بعناية ونستخدم ونش الرفع للأدوار العليا ونركّب الأثاث عند التسليم.</p>
+            <div className="mt-6 flex items-center gap-3">
+              <a href="#services" className="rounded-lg bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 font-bold">تعرف أكثر</a>
+              <a href="#contact" className="rounded-lg border border-amber-300 text-amber-700 px-5 py-2.5 font-bold">تواصل</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Steps */}
+      <section id="process" className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-8">خطوات الفراماوي</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {process.map((s, i) => (
+              <div key={i} className="rounded-2xl border border-gray-100 shadow-sm p-6">
+                <div className="flex items-center gap-2 text-amber-600 mb-3">
+                  <span className="w-8 h-8 rounded-full bg-amber-100 grid place-content-center">{s.icon}</span>
+                  <span className="font-extrabold text-[#222]">{s.title}</span>
+                </div>
+                <p className="text-[#555]">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Wavy Divider + Services */}
+      <div className="relative">
+        {/* موجة ذهبية */}
+        <svg className="w-full" viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#f7d96b" d="M0,64L48,58.7C96,53,192,43,288,37.3C384,32,480,32,576,37.3C672,43,768,53,864,69.3C960,85,1056,107,1152,101.3C1248,96,1344,64,1392,48L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"/>
+        </svg>
+      </div>
+      <section id="services" className="py-14 bg-gradient-to-b from-[#f7d96b] to-[#f3b932] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-8">خدماتنا</h3>
+          {/* بطاقات مائلة */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {services.slice(0,3).map((sv, i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-xl p-4 rotate-[-1.5deg] hover:rotate-0 transition will-change-transform">
+                <div className="h-44 w-full overflow-hidden rounded-xl">
+                  <img src={sv.img} alt={sv.title} className="w-full h-full object-cover"/>
+                </div>
+                <div className="pt-4">
+                  <div className="font-extrabold text-[#222]">{sv.title}</div>
+                  <p className="text-[#555] text-sm mt-1">{sv.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 mt-6">
+            {services.slice(3,6).map((sv, i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-xl p-4 rotate-[1.5deg] hover:rotate-0 transition will-change-transform">
+                <div className="h-44 w-full overflow-hidden rounded-xl">
+                  <img src={sv.img} alt={sv.title} className="w-full h-full object-cover"/>
+                </div>
+                <div className="pt-4">
+                  <div className="font-extrabold text-[#222]">{sv.title}</div>
+                  <p className="text-[#555] text-sm mt-1">{sv.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Extra Services – horizontal slider */}
+      <section className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl md:text-3xl font-extrabold">خدمات إضافية</h3>
+          </div>
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2">
+            {extra.map((x, i) => (
+              <div key={i} className="min-w-[260px] snap-start bg-white rounded-2xl shadow p-3 border border-gray-100">
+                <div className="h-36 w-full overflow-hidden rounded-xl">
+                  <img src={x.img} alt={x.title} className="w-full h-full object-cover"/>
+                </div>
+                <div className="pt-3 flex items-center justify-between">
+                  <div>
+                    <div className="font-extrabold text-[#222]">{x.title}</div>
+                  </div>
+                  <span className="text-xs font-extrabold px-2 py-1 rounded-full bg-red-500 text-white">{x.badge}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Company Stats */}
+      <section className="relative py-16">
+        <img src="/assets/formawi/stacks-warehouse.jpg" alt="مستودع" className="absolute inset-0 w-full h-full object-cover"/>
+        <div className="absolute inset-0 bg-[rgba(255,253,245,0.75)]"/>
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6 text-center">
+            <div className="rounded-2xl bg-black/60 text-white p-8">
+              <div className="text-3xl font-extrabold text-yellow-300">{years}+</div>
+              <div className="mt-1">سنوات خبرة</div>
+            </div>
+            <div className="rounded-2xl bg-black/60 text-white p-8">
+              <div className="text-3xl font-extrabold text-yellow-300">{clients.toLocaleString()}</div>
+              <div className="mt-1">عميل</div>
+            </div>
+            <div className="rounded-2xl bg-black/60 text-white p-8">
+              <div className="text-3xl font-extrabold text-yellow-300">{experts}</div>
+              <div className="mt-1">متخصصين</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog */}
+      <section className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-8">مقالات ونصائح</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {posts.map((p, i) => (
+              <article key={i} className="bg-white rounded-2xl shadow border border-gray-100 overflow-hidden">
+                <img src={p.img} alt={p.title} className="w-full h-44 object-cover"/>
+                <div className="p-5">
+                  <h4 className="font-extrabold text-[#222]">{p.title}</h4>
+                  <p className="text-[#555] text-sm mt-1">{p.excerpt}</p>
+                  <a href="#" className="inline-flex items-center gap-1 text-amber-700 font-bold mt-3 hover:underline">Read More <ChevronRight className="w-4 h-4"/></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section id="gallery" className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-4">معرض الفراماوي</h3>
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory">
+            {gallery.map((g, i) => (
+              <div key={i} className="snap-start min-w-[280px] rounded-2xl overflow-hidden shadow border border-gray-100">
+                <img src={g} alt={`gallery-${i}`} className="w-full h-44 object-cover"/>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#222] text-[#ddd] pt-12">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+          <div>
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-gradient-to-tr from-amber-400 to-yellow-500 rounded-md grid place-content-center">
+                <Truck className="w-6 h-6 text-white"/>
+              </div>
+              <div>
+                <div className="text-[#f3b932] font-extrabold">شركة الفراماوي</div>
+                <p className="text-sm text-gray-400">نقل عفش محترف داخل القاهرة والجيزة.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-[#f3b932] font-extrabold mb-3">خدمات</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#services" className="hover:text-white">نقل منازل</a></li>
+              <li><a href="#services" className="hover:text-white">نقل مكاتب</a></li>
+              <li><a href="#services" className="hover:text-white">ونش رفع</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[#f3b932] font-extrabold mb-3">تواصل</h4>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-[#f3b932]"/> 01024888950</li>
+              <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-[#f3b932]"/> info@alformawi.com</li>
+              <li className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#f3b932]"/> القاهرة، مصر</li>
+              <li className="flex items-center gap-3 pt-2">
+                <a href="#" className="hover:text-[#f3b932]"><Facebook className="w-5 h-5"/></a>
+                <a href="#" className="hover:text-[#f3b932]"><Instagram className="w-5 h-5"/></a>
+                <a href="#" className="hover:text-[#f3b932]"><Linkedin className="w-5 h-5"/></a>
+                <a href="#" className="hover:text-[#f3b932]"><Youtube className="w-5 h-5"/></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-10 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4 py-6 text-xs text-gray-500 flex items-center justify-between">
+            <span>© {new Date().getFullYear()} شركة الفراماوي</span>
+            <span>جميع الحقوق محفوظة</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
